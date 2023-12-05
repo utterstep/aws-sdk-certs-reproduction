@@ -1,0 +1,16 @@
+[package]
+name = "aws-sdk-certs-reproduction"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+aws-config = { version = "1", features = ["rustls", "behavior-version-latest"] }
+aws-sdk-ec2 = { version = "0.39", features = ["rustls", "behavior-version-latest"] }
+aws-sdk-s3 = { version = "0.39", features = ["rustls", "behavior-version-latest"] }
+aws-smithy-runtime = { version = "1", default-features = false, features = ["client", "connector-hyper-0-14-x"] }
+eyre = "0.6"
+hyper-rustls = { version = "0.24", default_features = false, features = ["http1", "http2", "webpki-tokio", "webpki-roots", "tls12", "logging"] }
+rustls = "0.21"
